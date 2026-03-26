@@ -14,3 +14,5 @@ __pycache__/
 
 # Kaggle credentials — important, never commit this
 kaggle.json
+
+.DS_Store
