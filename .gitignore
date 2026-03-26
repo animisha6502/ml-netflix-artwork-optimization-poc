@@ -1,0 +1,16 @@
+# Data files
+data/
+*.csv
+*.zip
+*.json
+
+# Model files
+*.pkl
+*.joblib
+
+# Jupyter
+.ipynb_checkpoints/
+__pycache__/
+
+# Kaggle credentials — important, never commit this
+kaggle.json
