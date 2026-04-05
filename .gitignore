@@ -1,8 +1,11 @@
 # Data files
 data/
-*.csv
 *.zip
-*.json
+AVA_Files/
+*.csv.gz
+
+# Credentials — never commit
+kaggle.json
 
 # Model files
 *.pkl
@@ -12,7 +15,5 @@ data/
 .ipynb_checkpoints/
 __pycache__/
 
-# Kaggle credentials — important, never commit this
-kaggle.json
-
+# OS
 .DS_Store
