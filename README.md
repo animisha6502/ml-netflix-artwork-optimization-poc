@@ -91,7 +91,9 @@ ml-netflix-artwork-optimization-poc/
 │   ├── fig5_model_results.png
 │   ├── fig6_feature_importance.png
 │   ├── fig_netflix_eda.png
-│   └── fig_predicted_ctr_heatmap.png
+│   └── fig_correlation_heatmap.png
+│   └── fig_missing_combined.png
+│   └── fig_temporal_patterns.png
 ├── outputs/
 │   ├── netflix_ctr_predictions.csv
 │   ├── dashboard_summary.csv
