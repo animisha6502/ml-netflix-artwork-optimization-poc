@@ -8,8 +8,6 @@ The system combines three data sources: Netflix content metadata,
 aesthetic quality scores from the AVA photography dataset, and a
 CTR prediction model trained on real user-ad interaction data.
 
----
-
 ## Notebooks
 
 | Notebook | Description |
@@ -18,8 +16,6 @@ CTR prediction model trained on real user-ad interaction data.
 | `02_criteo_ctr_eda.ipynb` | Exploratory analysis of the ad click dataset — class imbalance, feature distributions, click rate by segment |
 | `03_netflix_eda.ipynb` | Netflix catalog EDA — content type, genre breakdown, titles added per year, missing values |
 | `04_ava_unified_pipeline.ipynb` | AVA aesthetic scoring, genre mapping, unified feature table, CTR predictions, genre × segment heatmap |
-
----
 
 ## Results
 
@@ -34,8 +30,6 @@ Adding visual quality signals (via AVA) is what moves this number —
 which is the core finding of the project and the motivation for the
 unified pipeline in notebook 04.
 
----
-
 ## Key Output
 
 The system generates 26,421 predictions — one per Netflix title per
@@ -49,8 +43,6 @@ Output files are in `outputs/`:
 - `dashboard_summary.csv` — avg CTR by genre × segment (heatmap data)
 - `best_segment_per_title.csv` — winning segment per title
 
----
-
 ## Data
 
 | Dataset | Source | Size | Role |
@@ -63,8 +55,6 @@ Data files are not tracked. Place CSVs in `data/` if running locally.
 Only `AVA.txt` and `tags.txt` are needed from the AVA dataset —
 image downloads are not required.
 
----
-
 ## How to Reproduce
 
 1. Open any notebook in Google Colab
@@ -74,8 +64,6 @@ image downloads are not required.
 Run notebooks in sequence (01 → 02 → 03 → 04). Notebook 04 depends
 on the trained XGBoost model from 01/02 — a self-contained retraining
 cell is included at the top of 04 if running it standalone.
-
----
 
 ## Cloud Deployment Plan (AWS)
 
@@ -87,9 +75,8 @@ S3 (raw CSVs) → SageMaker (train + deploy endpoint)
 
 Estimated cost: under $5 using AWS free tier + $50 course credits.
 
----
-
 ## Repository Structure
+'''
 ml-netflix-artwork-optimization-poc/
 ├── notebooks/
 │   ├── 01_criteo_ctr_model.ipynb
@@ -115,8 +102,7 @@ ml-netflix-artwork-optimization-poc/
 ├── data/                          ← not tracked (see .gitignore)
 ├── .gitignore
 └── README.md
-
----
+'''
 
 ## Requirements
 
