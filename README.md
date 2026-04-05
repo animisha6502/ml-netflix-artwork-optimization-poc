@@ -76,7 +76,6 @@ S3 (raw CSVs) → SageMaker (train + deploy endpoint)
 Estimated cost: under $5 using AWS free tier + $50 course credits.
 
 ## Repository Structure
-'''
 ml-netflix-artwork-optimization-poc/
 ├── notebooks/
 │   ├── 01_criteo_ctr_model.ipynb
@@ -102,7 +101,6 @@ ml-netflix-artwork-optimization-poc/
 ├── data/                          ← not tracked (see .gitignore)
 ├── .gitignore
 └── README.md
-'''
 
 ## Requirements
 
