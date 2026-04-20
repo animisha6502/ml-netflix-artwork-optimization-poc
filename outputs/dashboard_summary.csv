@@ -1,31 +1,28 @@
 genre,user_segment,avg_predicted_ctr
-Action & Adventure,action_viewer,0.32739663
-Action & Adventure,drama_viewer,0.26221
-Action & Adventure,family_viewer,0.2929546
-Children & Family Movies,action_viewer,0.3054547
-Children & Family Movies,drama_viewer,0.21961388
-Children & Family Movies,family_viewer,0.26736513
-Comedies,action_viewer,0.3579376
-Comedies,drama_viewer,0.41272715
-Comedies,family_viewer,0.31688586
-Documentaries,action_viewer,0.43766356
-Documentaries,drama_viewer,0.45230773
-Documentaries,family_viewer,0.4183205
-Dramas,action_viewer,0.34680364
-Dramas,drama_viewer,0.3575508
-Dramas,family_viewer,0.3277026
-Independent Movies,action_viewer,0.172975
-Independent Movies,drama_viewer,0.20355001
-Independent Movies,family_viewer,0.108775
-International Movies,action_viewer,0.14473103
-International Movies,drama_viewer,0.2712582
-International Movies,family_viewer,0.096422836
-Other,action_viewer,0.4357827
-Other,drama_viewer,0.45152083
-Other,family_viewer,0.43980885
-Romantic Movies,action_viewer,0.3171667
-Romantic Movies,drama_viewer,0.24659999
-Romantic Movies,family_viewer,0.28333333
-Thrillers,action_viewer,0.4474923
-Thrillers,drama_viewer,0.3860231
-Thrillers,family_viewer,0.15601538
+Action & Adventure,action_viewer,0.35060585
+Action & Adventure,drama_viewer,0.36300611
+Action & Adventure,family_viewer,0.3347828
+Children & Family Movies,action_viewer,0.2908276
+Children & Family Movies,drama_viewer,0.28337935
+Children & Family Movies,family_viewer,0.24326244
+Comedies,action_viewer,0.37995347
+Comedies,drama_viewer,0.46103638
+Comedies,family_viewer,0.3478358
+Documentaries,action_viewer,0.38494673
+Documentaries,drama_viewer,0.43099225
+Documentaries,family_viewer,0.36077452
+Dramas,action_viewer,0.37135023
+Dramas,drama_viewer,0.4557614
+Dramas,family_viewer,0.38287404
+Independent Movies,action_viewer,0.19047593
+Independent Movies,drama_viewer,0.39280784
+Independent Movies,family_viewer,0.08473246
+International Movies,action_viewer,0.18937795
+International Movies,drama_viewer,0.32489902
+International Movies,family_viewer,0.094734654
+Romantic Movies,action_viewer,0.3762057
+Romantic Movies,drama_viewer,0.4445914
+Romantic Movies,family_viewer,0.35439998
+Thrillers,action_viewer,0.3654599
+Thrillers,drama_viewer,0.4537425
+Thrillers,family_viewer,0.38207853
