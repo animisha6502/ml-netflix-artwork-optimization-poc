@@ -8,14 +8,33 @@ The system combines three data sources: Netflix content metadata,
 aesthetic quality scores from the AVA photography dataset, and a
 CTR prediction model trained on real user-ad interaction data.
 
+## Live Demo
+
+The Streamlit app has three features:
+- **Thumbnail Scorer** — upload any image; returns predicted CTR, adjusted AVA score, face detection, and VADER sentiment breakdown
+- **TMDB Image Ranker** — fetch all posters for any title via the TMDB API, score and rank by predicted CTR
+- **A/B Simulator** — compare two titles head-to-head, project monthly clicks by segment
+
+Run locally:
+```bash
+pip install -r requirements.txt
+export TMDB_API_KEY=your_tmdb_key
+streamlit run streamlit_app_final.py
+```
+
 ## Notebooks
 
 | Notebook | Description |
 |---|---|
-| `01_criteo_ctr_model.ipynb` | Initial CTR pipeline — data cleaning, feature engineering, Logistic Regression + XGBoost baseline |
-| `02_criteo_ctr_eda.ipynb` | Exploratory analysis of the ad click dataset — class imbalance, feature distributions, click rate by segment |
+| `01_criteo_ctr_model.ipynb` | CTR pipeline — data cleaning, feature engineering, Logistic Regression + XGBoost baseline |
+| `02_criteo_ctr_eda.ipynb` | EDA of the ad click dataset — class imbalance, feature distributions, click rate by segment |
 | `03_netflix_eda.ipynb` | Netflix catalog EDA — content type, genre breakdown, titles added per year, missing values |
 | `04_ava_unified_pipeline.ipynb` | AVA aesthetic scoring, genre mapping, unified feature table, CTR predictions, genre × segment heatmap |
+| `05_pipeline_test.ipynb` | End-to-end pipeline validation — confirms model outputs and prediction counts |
+
+Run in sequence (01 → 02 → 03 → 04 → 05). Notebook 04 depends on the
+trained XGBoost model from 01 — a self-contained retraining cell is
+included at the top of 04 if running standalone.
 
 ## Results
 
@@ -57,32 +76,33 @@ image downloads are not required.
 
 ## How to Reproduce
 
+**Colab:**
 1. Open any notebook in Google Colab
 2. Upload your `kaggle.json` API token when prompted
-3. Run all cells in order
+3. Run all cells in order (01 → 02 → 03 → 04 → 05)
 
-Run notebooks in sequence (01 → 02 → 03 → 04). Notebook 04 depends
-on the trained XGBoost model from 01/02 — a self-contained retraining
-cell is included at the top of 04 if running it standalone.
-
-## Cloud Deployment Plan (AWS)
-
-The next phase migrates this pipeline to AWS:
-S3 (raw CSVs) → SageMaker (train + deploy endpoint)
-→ Lambda (calls endpoint, writes predictions)
-→ RDS MySQL (predictions table, verified via DBeaver)
-→ Streamlit (dashboard — genre × segment heatmap)
-
-Estimated cost: under $5 using AWS free tier + $50 course credits.
+**Locally:**
+```bash
+pip install -r requirements.txt
+# Place data CSVs in data/ then run notebooks in order
+```
 
 ## Repository Structure
+
 ```
 ml-netflix-artwork-optimization-poc/
 ├── notebooks/
 │   ├── 01_criteo_ctr_model.ipynb
 │   ├── 02_criteo_ctr_eda.ipynb
 │   ├── 03_netflix_eda.ipynb
-│   └── 04_ava_unified_pipeline.ipynb
+│   ├── 04_ava_unified_pipeline.ipynb
+│   └── 05_pipeline_test.ipynb
+├── models/
+│   ├── lr_ctr_model.pkl
+│   ├── xgb_ctr_model.pkl
+│   ├── xgb_model.pkl
+│   ├── scaler.pkl
+│   └── encoding_maps.json
 ├── figures/
 │   ├── fig1_class_distribution.png
 │   ├── fig2_missing_values.png
@@ -91,25 +111,36 @@ ml-netflix-artwork-optimization-poc/
 │   ├── fig5_model_results.png
 │   ├── fig6_feature_importance.png
 │   ├── fig_netflix_eda.png
-│   └── fig_correlation_heatmap.png
-│   └── fig_missing_combined.png
-│   └── fig_temporal_patterns.png
+│   ├── fig_correlation_heatmap.png
+│   ├── fig_missing_combined.png
+│   ├── fig_temporal_patterns.png
+│   ├── fig_predicted_ctr_heatmap.png
+│   ├── test_ctr_distributions.png
+│   └── test_genre_heatmap.png
 ├── outputs/
 │   ├── netflix_ctr_predictions.csv
 │   ├── dashboard_summary.csv
 │   └── best_segment_per_title.csv
-├── models/
-│   ├── feature_importance.png
-│   └── confusion_matrix.png
 ├── data/                          ← not tracked (see .gitignore)
+├── streamlit_app_final.py
+├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
 
 ## Requirements
 
-All code runs in Google Colab — no local installation needed.
-A Kaggle account and `kaggle.json` API token are required.
+```
+streamlit
+pandas
+numpy
+matplotlib
+Pillow
+requests
+opencv-python-headless
+nltk
+```
 
-Key libraries: `pandas`, `numpy`, `scikit-learn`, `xgboost`,
-`imbalanced-learn`, `matplotlib`, `seaborn`
+Notebooks also require: `scikit-learn`, `xgboost`, `imbalanced-learn`, `seaborn`.
+The Streamlit app runs fully locally — no LLM or external API key needed
+(TMDB key is optional and only required for the Image Ranker tab).
