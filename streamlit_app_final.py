@@ -21,13 +21,6 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageFilter
 import cv2 as _cv2
 
-import streamlit as st
-
-API_URL = st.secrets["EC2_API_URL"]
-
-# use it when calling your Flask API
-response = requests.post(f"{API_URL}/predict", json=payload)
-
 # ── NLTK / VADER (local, no API) ─────────────────────────────────────────────
 try:
     import nltk as _nltk
@@ -114,7 +107,7 @@ st.markdown("""
 
 
 # ── Data ─────────────────────────────────────────────────────────────────────
-REPO_ROOT   = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT   = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
 OUTPUTS_DIR = os.path.join(REPO_ROOT, "outputs")
 
 @st.cache_data
@@ -131,8 +124,8 @@ except FileNotFoundError:
 
 
 # ── Config ───────────────────────────────────────────────────────────────────
-API_URL  = "http://54.209.170.252:5000/predict"
-TMDB_KEY = os.environ.get("TMDB_API_KEY", "")
+API_URL  = st.secrets.get("EC2_API_URL", "http://54.209.170.252:5000") + "/predict"
+TMDB_KEY = st.secrets.get("TMDB_API_KEY", os.environ.get("TMDB_API_KEY", ""))
 LLM_OK   = _NLP_OK   # always True when nltk + opencv are installed
 
 SEGS = {
