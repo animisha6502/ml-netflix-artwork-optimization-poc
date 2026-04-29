@@ -21,6 +21,13 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageFilter
 import cv2 as _cv2
 
+import streamlit as st
+
+API_URL = st.secrets["EC2_API_URL"]
+
+# use it when calling your Flask API
+response = requests.post(f"{API_URL}/predict", json=payload)
+
 # ── NLTK / VADER (local, no API) ─────────────────────────────────────────────
 try:
     import nltk as _nltk
